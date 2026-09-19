@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ouça o Toy Piano</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:transparent;font-family:Arial,sans-serif;color:#222}
+.player{width:min(100%,520px);margin:auto;padding:14px 16px;border-radius:14px;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.title{font-size:16px;font-weight:600;margin-bottom:4px}.artist{font-size:12px;color:#666;margin-bottom:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+audio{width:100%;height:38px;margin-bottom:10px}.controls{display:flex;gap:8px;align-items:center}.btn{border:0;border-radius:20px;padding:9px 14px;background:#222;color:#fff;cursor:pointer;font-size:13px}.btn.secondary{background:#eee;color:#222}.counter{margin-left:auto;font-size:11px;color:#777}.hint{font-size:11px;color:#777;margin-top:9px}
+</style>
+</head>
+<body>
+<div class="player">
+  <div class="title" id="title">Ouça o Toy Piano</div>
+  <div class="artist" id="artist">Clique em “Ouça” para ouvir uma gravação.</div>
+  <audio id="audio" controls preload="none"></audio>
+  <div class="controls">
+    <button class="btn" id="play">Ouça</button>
+    <button class="btn secondary" id="prev">Anterior</button>
+    <button class="btn secondary" id="next">Próxima</button>
+    <span class="counter" id="counter"></span>
+  </div>
+</div>
+<script>
+const tracks=[
+ ['The Burning Bush — Obtaining Awareness','Cláudio Thompson','audio/15-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Obtaining-Awareness.mp3'],
+ ['The Burning Bush — Setting Ways','Cláudio Thompson','audio/16-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Setting-Ways.mp3'],
+ ['The Burning Bush — Questionings','Cláudio Thompson','audio/17-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Questionings.mp3'],
+ ['The Burning Bush — Reaching Completeness','Cláudio Thompson','audio/18-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Reaching-Completeness.mp3'],
+ ['Raga','Dimitri Cervo / Késia Decoté','audio/Dimitri Cervo - Raga (Késia Decoté, piano de brinquedo).mp3'],
+ ['Fragmentos Dançantes','Marcelo Rauta / Cláudio Thompson','audio/FRAGMENTOS DANÇANTES de Marcelo Rauta para Toy Piano - Cláudio Thompson.mp3'],
+ ['Colour Étude II','Késia Decoté','audio/Késia Decoté - Colour Étude II - Nonclassical.mp3'],
+ ['Full Moon','Késia Decoté','audio/Késia Decoté - Full Moon - Nonclassical.mp3'],
+ ['Night over Berstane','Késia Decoté','audio/Késia Decoté - Night over Berstane - Nonclassical.mp3'],
+ ['Para a Frente','Késia Decoté','audio/Késia Decoté - Para a Frente - Nonclassical.mp3'],
+ ['Uacataca Tinguilim','Toy Piano Brasil','audio/UACATACA TINGUILIM - versão ESTÚDIO.mp3']
+];
+const audio=document.getElementById('audio'),title=document.getElementById('title'),artist=document.getElementById('artist'),counter=document.getElementById('counter');let i=-1;
+function load(n,autoplay=false){i=(n+tracks.length)%tracks.length;const t=tracks[i];title.textContent=t[0];artist.textContent=t[1];audio.src=encodeURI(t[2]);counter.textContent=(i+1)+' / '+tracks.length;if(autoplay)audio.play().catch(()=>{});}
+function random(){let n=Math.floor(Math.random()*tracks.length);if(tracks.length>1&&n===i)n=(n+1)%tracks.length;load(n,true)}
+document.getElementById('play').onclick=()=>{if(i<0)random();else audio.paused?audio.play():audio.pause()};
+document.getElementById('prev').onclick=()=>load(i-1,true);document.getElementById('next').onclick=()=>load(i+1,true);audio.onended=()=>load(i+1,true);
+</script>
+</body>
+</html>
