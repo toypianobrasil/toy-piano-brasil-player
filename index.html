@@ -25,17 +25,17 @@ audio{width:100%;height:38px;margin-bottom:10px}.controls{display:flex;gap:8px;a
 </div>
 <script>
 const tracks=[
- ['The Burning Bush — Obtaining Awareness','Cláudio Thompson','15-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Obtaining-Awareness.mp3'],
- ['The Burning Bush — Setting Ways','Cláudio Thompson','16-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Setting-Ways.mp3'],
- ['The Burning Bush — Questionings','Cláudio Thompson','17-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Questionings.mp3'],
- ['The Burning Bush — Reaching Completeness','Cláudio Thompson','18-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Reaching-Completeness.mp3'],
- ['Raga','Dimitri Cervo / Késia Decoté','Dimitri Cervo - Raga (Késia Decoté, piano de brinquedo).mp3'],
- ['Fragmentos Dançantes','Marcelo Rauta / Cláudio Thompson','FRAGMENTOS DANÇANTES de Marcelo Rauta para Toy Piano - Cláudio Thompson.mp3'],
- ['Colour Étude II','Késia Decoté','Késia Decoté - Colour Étude II - Nonclassical.mp3'],
- ['Full Moon','Késia Decoté','Késia Decoté - Full Moon - Nonclassical.mp3'],
- ['Night over Berstane','Késia Decoté','Késia Decoté - Night over Berstane - Nonclassical.mp3'],
- ['Para a Frente','Késia Decoté','Késia Decoté - Para a Frente - Nonclassical.mp3'],
- ['Uacataca Tinguilim','Toy Piano Brasil','UACATACA TINGUILIM - versão ESTÚDIO.mp3']
+ ['The Burning Bush — Obtaining Awareness','Cláudio Thompson','audio/15-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Obtaining-Awareness.mp3'],
+ ['The Burning Bush — Setting Ways','Cláudio Thompson','audio/16-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Setting-Ways.mp3'],
+ ['The Burning Bush — Questionings','Cláudio Thompson','audio/17-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Questionings.mp3'],
+ ['The Burning Bush — Reaching Completeness','Cláudio Thompson','audio/18-The-Burning-Bush-_The-Daily-Revelation_-_Op.61-2016_-Reaching-Completeness.mp3'],
+ ['Raga','Dimitri Cervo / Késia Decoté','audio/Dimitri Cervo - Raga (Késia Decoté, piano de brinquedo).mp3'],
+ ['Fragmentos Dançantes','Marcelo Rauta / Cláudio Thompson','audio/FRAGMENTOS DANÇANTES de Marcelo Rauta para Toy Piano - Cláudio Thompson.mp3'],
+ ['Colour Étude II','Késia Decoté','audio/Késia Decoté - Colour Étude II - Nonclassical.mp3'],
+ ['Full Moon','Késia Decoté','audio/Késia Decoté - Full Moon - Nonclassical.mp3'],
+ ['Night over Berstane','Késia Decoté','audio/Késia Decoté - Night over Berstane - Nonclassical.mp3'],
+ ['Para a Frente','Késia Decoté','audio/Késia Decoté - Para a Frente - Nonclassical.mp3'],
+ ['Uacataca Tinguilim','Toy Piano Brasil','audio/UACATACA TINGUILIM - versão ESTÚDIO.mp3']
 ];
 const audio=document.getElementById('audio'),title=document.getElementById('title'),artist=document.getElementById('artist'),counter=document.getElementById('counter');let i=-1;
 function load(n,autoplay=false){i=(n+tracks.length)%tracks.length;const t=tracks[i];title.textContent=t[0];artist.textContent=t[1];audio.src=encodeURI(t[2]);counter.textContent=(i+1)+' / '+tracks.length;if(autoplay)audio.play().catch(()=>{});}
